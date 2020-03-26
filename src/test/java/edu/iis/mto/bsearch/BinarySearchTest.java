@@ -1,5 +1,6 @@
 package edu.iis.mto.bsearch;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -64,6 +65,15 @@ class BinarySearchTest {
         assertFalse(searchResult.isFound());
         assertTrue(searchResult.getPosition() == -1);
     }
+
+    @Test void searchInSeqWithNullPointer(){
+        seq = null;
+        key=3;
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            searchResult = binarySearch.search(key, seq);
+        });
+    }
+
 }
 
 
