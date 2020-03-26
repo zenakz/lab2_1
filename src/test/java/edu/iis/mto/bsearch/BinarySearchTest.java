@@ -98,7 +98,13 @@ class BinarySearchTest {
         assertEquals(seq[searchResult.getPosition()], key);
     }
 
-    
+    @Test void searchInDecreasingValuesArray() {
+        seq = new int[] {9, 7, 5, 4, 3, 2, 1, -8};
+        key = 1;
+        searchResult = binarySearch.search(key, seq);
+        assertFalse(searchResult.isFound());
+        assertTrue(searchResult.getPosition() == -1);
+    }
 }
 
 //Testy z tabeli nie byly kompletne, nie byly sprawdzane warunki wejsciowe oraz dzialanie programu w przypadku podania nulla
