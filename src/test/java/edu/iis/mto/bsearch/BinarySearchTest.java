@@ -34,7 +34,7 @@ class BinarySearchTest {
         assertTrue(searchResult.getPosition() == -1);
     }
 
-    @Test void keyAsFirstElement(){
+    @Test void keyAsFirstElement() {
         seq = new int[] {2, 3, 6, 9};
         key = 2;
         searchResult = binarySearch.search(key, seq);
@@ -42,7 +42,7 @@ class BinarySearchTest {
         assertEquals(seq[searchResult.getPosition()], key);
     }
 
-    @Test void keyAsLastElement(){
+    @Test void keyAsLastElement() {
         seq = new int[] {2, 3, 6, 9};
         key = 9;
         searchResult = binarySearch.search(key, seq);
@@ -50,7 +50,7 @@ class BinarySearchTest {
         assertEquals(seq[searchResult.getPosition()], key);
     }
 
-    @Test void keyAsMiddleElement(){
+    @Test void keyAsMiddleElement() {
         seq = new int[] {2, 3, 6, 9, 35};
         key = 6;
         searchResult = binarySearch.search(key, seq);
@@ -58,7 +58,7 @@ class BinarySearchTest {
         assertEquals(seq[searchResult.getPosition()], key);
     }
 
-    @Test void keyNotInSeq(){
+    @Test void keyNotInSeq() {
         seq = new int[] {2, 3, 6, 9};
         key = 89;
         searchResult = binarySearch.search(key, seq);
@@ -66,17 +66,17 @@ class BinarySearchTest {
         assertTrue(searchResult.getPosition() == -1);
     }
 
-    @Test void searchInSeqWithNullPointer(){
+    @Test void searchInSeqWithNullPointer() {
         seq = null;
-        key=3;
+        key = 3;
         Assertions.assertThrows(NullPointerException.class, () -> {
             searchResult = binarySearch.search(key, seq);
         });
     }
 
-    @Test void searchInUnsortedArray(){
-        seq = new int[]{ 3, -1, 2, 0, 18, -15};
-        key=-15;
+    @Test void searchInUnsortedArray() {
+        seq = new int[] {3, -1, 2, 0, 18, -15};
+        key = -15;
         searchResult = binarySearch.search(key, seq);
         assertFalse(searchResult.isFound());
         assertTrue(searchResult.getPosition() == -1);
