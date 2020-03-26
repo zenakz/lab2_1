@@ -29,7 +29,7 @@ class BinarySearchTest {
         key=1;
         searchResult = binarySearch.search(key, seq);
         assertFalse(searchResult.isFound());
-        assertNotEquals(seq[searchResult.getPosition()], key);
+        if(searchResult.getPosition()!=-1)assertNotEquals(seq[searchResult.getPosition()], key);
     }
 
 }
