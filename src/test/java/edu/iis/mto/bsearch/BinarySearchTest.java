@@ -82,6 +82,14 @@ class BinarySearchTest {
         assertTrue(searchResult.getPosition() == -1);
     }
 
+    @Test void searchInArrayWithNoElements(){
+        seq = new int[]{};
+        key=8;
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            searchResult = binarySearch.search(key, seq);
+        });
+
+    }
 }
 
-
+//Testy z tabeli nie byly kompletne, nie byly sprawdzane warunki wejsciowe oraz dzialanie programu w przypadku podania nulla
