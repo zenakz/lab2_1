@@ -7,31 +7,63 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BinarySearchTest {
+
     static BinarySearch binarySearch;
     int seq[];
     int key;
     SearchResult searchResult = null;
-    @BeforeAll
-    static void create(){
+
+    @BeforeAll static void create() {
         binarySearch = BinarySearch.create();
     }
 
     @Test void isInSequenceOfOneTest() {
-        seq = new int[]{2};
-        key=2;
+        seq = new int[] {2};
+        key = 2;
         searchResult = binarySearch.search(key, seq);
         assertTrue(searchResult.isFound());
         assertEquals(seq[searchResult.getPosition()], key);
     }
 
     @Test void isNotInSequenceOfOneTest() {
-        seq = new int[]{2};
-        key=1;
+        seq = new int[] {2};
+        key = 1;
         searchResult = binarySearch.search(key, seq);
         assertFalse(searchResult.isFound());
-        if(searchResult.getPosition()!=-1)assertNotEquals(seq[searchResult.getPosition()], key);
+        assertTrue(searchResult.getPosition() == -1);
     }
 
+    @Test void keyAsFirstElement(){
+        seq = new int[] {2, 3, 6, 9};
+        key = 2;
+        searchResult = binarySearch.search(key, seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(seq[searchResult.getPosition()], key);
+    }
+
+    @Test void keyAsLastElement(){
+        seq = new int[] {2, 3, 6, 9};
+        key = 9;
+        searchResult = binarySearch.search(key, seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(seq[searchResult.getPosition()], key);
+    }
+
+    @Test void keyAsMiddleElement(){
+        seq = new int[] {2, 3, 6, 9, 35};
+        key = 6;
+        searchResult = binarySearch.search(key, seq);
+        assertTrue(searchResult.isFound());
+        assertEquals(seq[searchResult.getPosition()], key);
+    }
+
+    @Test void keyNotInSeq(){
+        seq = new int[] {2, 3, 6, 9};
+        key = 89;
+        searchResult = binarySearch.search(key, seq);
+        assertFalse(searchResult.isFound());
+        assertTrue(searchResult.getPosition() == -1);
+    }
 }
 
 
