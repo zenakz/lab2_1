@@ -74,6 +74,14 @@ class BinarySearchTest {
         });
     }
 
+    @Test void searchInUnsortedArray(){
+        seq = new int[]{ 3, -1, 2, 0, 18, -15};
+        key=-15;
+        searchResult = binarySearch.search(key, seq);
+        assertFalse(searchResult.isFound());
+        assertTrue(searchResult.getPosition() == -1);
+    }
+
 }
 
 
